@@ -1,6 +1,6 @@
 class UnionFindDSU{
-public:
     vector<int> parent, rank;
+public:
     UnionFindDSU(int n){
         parent.resize(n);
         rank.resize(n, 0);
@@ -31,6 +31,8 @@ public:
             rank[rootB]++;
         }
     }
+    
+    friend class Solution;
 };
 
 class Solution {
