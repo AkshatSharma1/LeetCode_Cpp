@@ -32,21 +32,31 @@ public:
         // for(int j = 0;j<prime.size();j++) cout<<prime[j]<<" ";
         // cout<<endl;
         
-        for(int i=n-2;i>=0;i--){
+//         for(int i=n-2;i>=0;i--){
             
-            //first check if prev is bigger than nums[i]
-            if(nums[i+1]>nums[i]){
-                continue;
+//             //first check if prev is bigger than nums[i]
+//             if(nums[i+1]>nums[i]){
+//                 continue;
+//             }
+            
+//             //find prime big possible less than prev
+//             auto p = lower_bound(prime.begin(), prime.end(), nums[i] - nums[i+1]+1);
+            
+//             if(p==prime.end()) return false;
+            
+//             nums[i] -= prime[(p - prime.begin())];    
+            
+//             if(nums[i]<=0) return false;
+//         }
+        
+        for(int i=0;i<n;i++){
+            if(i && nums[i]<=nums[i-1]) return false;
+            
+            auto p = lower_bound(prime.begin(), prime.end(), nums[i] - (i?nums[i-1]:0));
+            
+            if(p!=prime.begin()){
+                nums[i] -= prime[(p-prime.begin())-1];
             }
-            
-            //find prime big possible less than prev
-            auto p = lower_bound(prime.begin(), prime.end(), nums[i] - nums[i+1] + 1);
-            
-            if(p==prime.end()) return false;
-            
-            nums[i] -= prime[p - prime.begin()];    
-            
-            if(nums[i]<=0) return false;
         }
         
         return true;
