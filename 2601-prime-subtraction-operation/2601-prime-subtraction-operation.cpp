@@ -52,10 +52,13 @@ public:
         for(int i=0;i<n;i++){
             if(i && nums[i]<=nums[i-1]) return false;
             
-            auto p = lower_bound(prime.begin(), prime.end(), nums[i] - (i?nums[i-1]:0));
+            auto p = 0;
             
-            if(p!=prime.begin()){
-                nums[i] -= prime[(p-prime.begin())-1];
+            if(i==0) p = lower_bound(prime.begin(), prime.end(), nums[i] - 0) - prime.begin();
+            else p = lower_bound(prime.begin(), prime.end(), nums[i] - nums[i-1]) - prime.begin();
+            
+            if(p!=0){
+                nums[i] -= prime[p-1];
             }
         }
         
