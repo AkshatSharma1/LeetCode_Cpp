@@ -5,22 +5,19 @@ class Solution:
             return 0
         
         if deepee[i]!=-1: return deepee[i]
+        
         ans1=costs[0] + self.helper(days, costs, i+1, deepee) 
         
         curr=i
         for index in range(curr,len(days)):
             if days[index]<days[i]+7:
                 curr+=1
-            else:
-                break
 
         ans2=costs[1]+self.helper(days, costs, curr, deepee)
         curr=i
         for index in range(curr,len(days)):
             if days[index]<days[i]+30:
                 curr+=1
-            else:
-                break
 
         ans3=costs[2]+self.helper(days, costs, curr, deepee)
         
