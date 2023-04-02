@@ -12,9 +12,15 @@ public:
         //no need do inbuilt changes
         // vector<int> pairs(n, 0);
         
+        //unordered_map to store count of each spell
+        unordered_map<int,int> mp;
+        
+        int count = 0;
         for(int i=0;i<n;i++){
             
-            int count = 0;
+            if(mp.find(spells[i])!=mp.end()) spells[i] = mp[spells[i]];
+            
+            count = 0;
             long long checkingCondition = ceil(success*1.0/spells[i]);
             
             if(checkingCondition > potions[m-1]) spells[i] = 0;
@@ -27,6 +33,7 @@ public:
             // pairs[i] = count;
             
             spells[i] = count;
+            mp[spells[i]] = count;
             
         }
         
