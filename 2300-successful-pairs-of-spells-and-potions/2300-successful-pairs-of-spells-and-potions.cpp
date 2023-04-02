@@ -8,7 +8,7 @@ public:
         int n = spells.size();
         int m = potions.size();
         sort(potions.begin(), potions.end());
-        vector<int> pairs(n, 0);
+        // vector<int> pairs(n, 0);
         
         for(int i=0;i<n;i++){
             
@@ -18,10 +18,11 @@ public:
             
             count = m - leastStrengthReq;
             // cout<<count<<" ";
-            pairs[i] = count;
+            // pairs[i] = count;
+            spells[i] = count;
             
         }
         
-        return pairs;
+        return spells;
     }
 };
